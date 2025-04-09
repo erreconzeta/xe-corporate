@@ -58,7 +58,10 @@ export function HomeScreen() {
             {/* Balances Section */}
             <div className="mb-8">
               <div className="mb-4">
-                <h2 className="text-xl font-semibold text-left">Balances</h2>
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold">Balances</h2>
+                  <Button variant="link">See all</Button>
+                </div>
                 <div className="mt-1 border-b border-input"></div>
               </div>
               <div className="overflow-x-auto" style={{
@@ -71,42 +74,36 @@ export function HomeScreen() {
                     amount="12,345.67"
                     currency="USD"
                     countryCode="US"
-                    trend={{ value: "+2.5%", isPositive: true }}
                   />
                   <BalanceCard
                     title="EUR Balance"
                     amount="8,901.23"
                     currency="EUR"
                     countryCode="DE"
-                    trend={{ value: "-1.2%", isPositive: false }}
                   />
                   <BalanceCard
                     title="GBP Balance"
                     amount="5,678.90"
                     currency="GBP"
                     countryCode="GB"
-                    trend={{ value: "+0.8%", isPositive: true }}
                   />
                   <BalanceCard
                     title="JPY Balance"
                     amount="150,432.00"
                     currency="JPY"
                     countryCode="JP"
-                    trend={{ value: "+1.7%", isPositive: true }}
                   />
                   <BalanceCard
                     title="CAD Balance"
                     amount="7,890.45"
                     currency="CAD"
                     countryCode="CA"
-                    trend={{ value: "-0.5%", isPositive: false }}
                   />
                   <BalanceCard
                     title="AUD Balance"
                     amount="9,123.78"
                     currency="AUD"
                     countryCode="AU"
-                    trend={{ value: "+1.3%", isPositive: true }}
                   />
                 </div>
               </div>
