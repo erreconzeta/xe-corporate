@@ -3,22 +3,24 @@ import { Button } from "./ui/button"
 
 export function Sidebar() {
   return (
-    <div className="w-[240px] border-r h-screen flex flex-col">
+    <div className="w-[240px] border-r border-input fixed top-0 bottom-0 flex flex-col">
       {/* Logo section */}
-      <div className="p-4 border-b">
-        <div className="w-8 h-8">
-          <img src="/xe-logo.svg" alt="XE Logo" className="w-full h-full" />
-        </div>
+      <div className="p-2 shrink-0">
+        <Link to="/" className="block">
+          <div className="w-14 h-14">
+            <img src="/XE logo.svg" alt="XE Logo" className="w-full h-full" />
+          </div>
+        </Link>
       </div>
 
       {/* Send Money Button */}
-      <div className="p-4">
+      <div className="p-3 shrink-0">
         <Button className="w-full">Send Money</Button>
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1">
-        <div className="space-y-1 p-2">
+      <nav className="flex-1 overflow-y-auto">
+        <div className="space-y-1 p-4">
           <Link to="/" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md bg-accent">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -66,7 +68,7 @@ export function Sidebar() {
       </nav>
 
       {/* Help Link at bottom */}
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-input shrink-0">
         <Link to="/help" className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md text-muted-foreground hover:bg-accent">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />

@@ -1,56 +1,65 @@
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { Sidebar } from "../components/Sidebar"
+import { Send, PlusCircle, RefreshCcw, Calendar } from "lucide-react"
 
 export function HomeScreen() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Global Top Navigation Bar */}
-      <div className="border-b">
-        <div className="flex h-16 items-center justify-end px-4">
-          <Link to="/">
-            <Button variant="ghost">Back to Main page</Button>
-          </Link>
-        </div>
-      </div>
-
       <div className="flex">
         <Sidebar />
         
-        <div className="flex-1">
+        <div className="flex-1 ml-[240px]">
           {/* User Profile Bar */}
-          <div className="border-b">
-            <div className="flex h-16 items-center px-4">
-              <div className="flex items-center gap-2">
-                <span className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-sm font-medium">
-                  SL
-                </span>
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">Sky Compass Media LLC</span>
-                  <span className="text-xs text-muted-foreground">Daniel Moore</span>
+          <div className="border-b border-input">
+            <div className="flex h-14 items-center">
+              <div className="max-w-[960px] w-full mx-auto px-4">
+                <div className="flex items-center gap-2 justify-end">
+                  <span className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-sm font-medium">
+                    SL
+                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium">Sky Compass Media LLC</span>
+                    <span className="text-xs text-muted-foreground">Daniel Moore</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Main Content */}
-          <div className="p-6">
+          <div className="p-4 max-w-[960px] w-full mx-auto">
             {/* Welcome Header */}
-            <div className="mb-8">
+            <div className="mb-8 text-left">
               <h1 className="text-2xl font-semibold">Welcome, Sky Compass Media LLC</h1>
               
               {/* Action Buttons */}
               <div className="flex gap-3 mt-4">
-                <Button variant="default">Quick transfer</Button>
-                <Button variant="secondary">Add funds</Button>
-                <Button variant="secondary">Convert</Button>
-                <Button variant="secondary">Schedule</Button>
+                <Button variant="default" className="flex items-center gap-2">
+                  <Send className="h-4 w-4" />
+                  Quick transfer
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <PlusCircle className="h-4 w-4" />
+                  Add funds
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <RefreshCcw className="h-4 w-4" />
+                  Convert
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Schedule
+                </Button>
               </div>
             </div>
 
             {/* Balances Section */}
             <div className="mb-8">
-              <h2 className="text-xl font-semibold mb-4">Balances</h2>
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-left">Balances</h2>
+                <div className="mt-1 border-b border-input"></div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {/* USD Balance */}
                 <div className="rounded-lg border p-4">
@@ -106,14 +115,17 @@ export function HomeScreen() {
 
             {/* Transactions Section */}
             <div className="mb-8">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">Transactions</h2>
-                <Button variant="link">See all</Button>
+              <div className="mb-4">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold">Transactions</h2>
+                  <Button variant="link">See all</Button>
+                </div>
+                <div className="mt-1 border-b border-input"></div>
               </div>
               
               <div className="space-y-4">
                 {/* Transaction Items */}
-                <div className="flex justify-between items-center p-4 border rounded-lg">
+                <div className="flex justify-between items-center p-4 rounded-lg">
                   <div>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-2 rounded-full bg-blue-500"></div>
@@ -129,7 +141,7 @@ export function HomeScreen() {
                 </div>
 
                 {/* Completed Transaction */}
-                <div className="flex justify-between items-center p-4 border rounded-lg">
+                <div className="flex justify-between items-center p-4 rounded-lg">
                   <div>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-2 rounded-full bg-green-500"></div>
@@ -148,9 +160,12 @@ export function HomeScreen() {
 
             {/* Recipients Section */}
             <div className="mb-8">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">Recipients</h2>
-                <Button variant="link">See all</Button>
+              <div className="mb-4">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold">Recipients</h2>
+                  <Button variant="link">See all</Button>
+                </div>
+                <div className="mt-1 border-b border-input"></div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -204,9 +219,12 @@ export function HomeScreen() {
 
             {/* Transfer Calculator Section */}
             <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">Transfer calculator</h2>
-                <Button variant="link">See all</Button>
+              <div className="mb-4">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-semibold">Transfer calculator</h2>
+                  <Button variant="link">See all</Button>
+                </div>
+                <div className="mt-1 border-b border-input"></div>
               </div>
 
               <div className="p-4 border rounded-lg">
