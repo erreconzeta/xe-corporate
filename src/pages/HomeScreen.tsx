@@ -2,6 +2,7 @@ import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { Sidebar } from "../components/Sidebar"
 import { Send, PlusCircle, RefreshCcw, Calendar } from "lucide-react"
+import BalanceCard from "../components/BalanceCard"
 
 export function HomeScreen() {
   return (
@@ -60,55 +61,53 @@ export function HomeScreen() {
                 <h2 className="text-xl font-semibold text-left">Balances</h2>
                 <div className="mt-1 border-b border-input"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {/* USD Balance */}
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🇺🇸</span>
-                    <span className="text-sm text-muted-foreground">Total balance</span>
-                  </div>
-                  <div className="font-semibold">10,000.00 USD</div>
-                  <div className="text-sm text-muted-foreground">10,000.00 available</div>
-                </div>
-
-                {/* EUR Balance */}
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🇪🇺</span>
-                    <span className="text-sm text-muted-foreground">Total balance</span>
-                  </div>
-                  <div className="font-semibold">500.00 EUR</div>
-                  <div className="text-sm text-muted-foreground">500.00 available</div>
-                </div>
-
-                {/* CAD Balance */}
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🇨🇦</span>
-                    <span className="text-sm text-muted-foreground">Total balance</span>
-                  </div>
-                  <div className="font-semibold">2,000.00 CAD</div>
-                  <div className="text-sm text-muted-foreground">2,000.00 available</div>
-                </div>
-
-                {/* AUD Balance */}
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🇦🇺</span>
-                    <span className="text-sm text-muted-foreground">Total balance</span>
-                  </div>
-                  <div className="font-semibold">1,200.00 AUD</div>
-                  <div className="text-sm text-muted-foreground">1,200.00 available</div>
-                </div>
-
-                {/* MXN Balance */}
-                <div className="rounded-lg border p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🇲🇽</span>
-                    <span className="text-sm text-muted-foreground">Total balance</span>
-                  </div>
-                  <div className="font-semibold">10.00 MXN</div>
-                  <div className="text-sm text-muted-foreground">10.00 available</div>
+              <div className="overflow-x-auto" style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(0,0,0,0.2) transparent'
+              }}>
+                <div className="flex gap-6 pb-4 min-w-full">
+                  <BalanceCard
+                    title="Total Balance"
+                    amount="12,345.67"
+                    currency="USD"
+                    countryCode="US"
+                    trend={{ value: "+2.5%", isPositive: true }}
+                  />
+                  <BalanceCard
+                    title="EUR Balance"
+                    amount="8,901.23"
+                    currency="EUR"
+                    countryCode="DE"
+                    trend={{ value: "-1.2%", isPositive: false }}
+                  />
+                  <BalanceCard
+                    title="GBP Balance"
+                    amount="5,678.90"
+                    currency="GBP"
+                    countryCode="GB"
+                    trend={{ value: "+0.8%", isPositive: true }}
+                  />
+                  <BalanceCard
+                    title="JPY Balance"
+                    amount="150,432.00"
+                    currency="JPY"
+                    countryCode="JP"
+                    trend={{ value: "+1.7%", isPositive: true }}
+                  />
+                  <BalanceCard
+                    title="CAD Balance"
+                    amount="7,890.45"
+                    currency="CAD"
+                    countryCode="CA"
+                    trend={{ value: "-0.5%", isPositive: false }}
+                  />
+                  <BalanceCard
+                    title="AUD Balance"
+                    amount="9,123.78"
+                    currency="AUD"
+                    countryCode="AU"
+                    trend={{ value: "+1.3%", isPositive: true }}
+                  />
                 </div>
               </div>
             </div>
