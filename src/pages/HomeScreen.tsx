@@ -24,12 +24,12 @@ const chartLabels = [
 export function HomeScreen() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="flex">
+      <div className="flex flex-col">
         <Sidebar />
         
-        <div className="flex-1 ml-[240px]">
+        <div className="flex-1 md:ml-[240px]">
           {/* User Profile Bar */}
-          <div className="border-b border-input">
+          <div className="border-b border-input md:block hidden">
             <div className="flex h-14 items-center">
               <div className="max-w-[960px] w-full mx-auto px-4">
                 <div className="flex items-center gap-0 justify-end">
@@ -50,23 +50,25 @@ export function HomeScreen() {
               <h1 className="text-2xl font-semibold">Welcome, James Mitchell</h1>
               
               {/* Action Buttons */}
-              <div className="flex gap-3 mt-4">
-                <Button variant="default" className="flex items-center gap-2">
-                  <Send className="h-4 w-4" />
-                  Quick transfer
-                </Button>
-                <Button variant="secondary" className="flex items-center gap-2">
-                  <PlusCircle className="h-4 w-4" />
-                  Add funds
-                </Button>
-                <Button variant="secondary" className="flex items-center gap-2">
-                  <RefreshCcw className="h-4 w-4" />
-                  Convert
-                </Button>
-                <Button variant="secondary" className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4" />
-                  Schedule
-                </Button>
+              <div className="overflow-x-auto">
+                <div className="flex gap-3 mt-4 pb-4 min-w-max">
+                  <Button variant="default" className="flex items-center gap-2">
+                    <Send className="h-4 w-4" />
+                    Quick transfer
+                  </Button>
+                  <Button variant="secondary" className="flex items-center gap-2">
+                    <PlusCircle className="h-4 w-4" />
+                    Add funds
+                  </Button>
+                  <Button variant="secondary" className="flex items-center gap-2">
+                    <RefreshCcw className="h-4 w-4" />
+                    Convert
+                  </Button>
+                  <Button variant="secondary" className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Schedule
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -136,19 +138,20 @@ export function HomeScreen() {
                 {/* In Progress Transaction */}
                 <div className="flex justify-between items-center px-0 py-4 rounded-lg">
                   <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                    <div className="min-w-8 min-h-8 w-8 h-8 rounded-full border border-input flex items-center justify-center shrink-0">
                       <Clock className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <div>
                       <div className="font-medium">Michael Anderson</div>
-                      <div className="text-sm text-muted-foreground">In progress · January 18, 2025</div>
+                      <div className="text-sm text-muted-foreground md:hidden">Jan 18, 2025 · 1,000 AUD</div>
+                      <div className="text-sm text-muted-foreground hidden md:block">In progress · January 18, 2025</div>
                     </div>
                   </div>
-                  <div className="w-[128px] text-left">
+                  <div className="hidden md:block w-[128px] text-left">
                     <div className="font-medium text-left">1,000 AUD</div>
                     <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
                   </div>
-                  <div className="w-[100px] flex justify-end">
+                  <div className="md:w-[100px] flex justify-end">
                     <Button variant="secondary">See details</Button>
                   </div>
                 </div>
@@ -156,19 +159,20 @@ export function HomeScreen() {
                 {/* Completed Transaction */}
                 <div className="flex justify-between items-center px-0 py-4 rounded-lg">
                   <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                    <div className="min-w-8 min-h-8 w-8 h-8 rounded-full border border-input flex items-center justify-center shrink-0">
                       <Check className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <div>
                       <div className="font-medium">Sarah Thompson</div>
-                      <div className="text-sm text-muted-foreground">Completed · January 18, 2025</div>
+                      <div className="text-sm text-muted-foreground md:hidden">Jan 18, 2025 · 1,000 AUD</div>
+                      <div className="text-sm text-muted-foreground hidden md:block">Completed · January 18, 2025</div>
                     </div>
                   </div>
-                  <div className="w-[128px] text-left">
+                  <div className="hidden md:block w-[128px] text-left">
                     <div className="font-medium text-left">1,000 AUD</div>
                     <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
                   </div>
-                  <div className="w-[100px] flex justify-end">
+                  <div className="md:w-[100px] flex justify-end">
                     <Button variant="secondary">Resend</Button>
                   </div>
                 </div>
@@ -176,19 +180,20 @@ export function HomeScreen() {
                 {/* Canceled Transaction */}
                 <div className="flex justify-between items-center px-0 py-4 rounded-lg">
                   <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                    <div className="min-w-8 min-h-8 w-8 h-8 rounded-full border border-input flex items-center justify-center shrink-0">
                       <XCircle className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <div>
                       <div className="font-medium">David Wilson</div>
-                      <div className="text-sm text-muted-foreground">Canceled · January 18, 2025</div>
+                      <div className="text-sm text-muted-foreground md:hidden">Jan 18, 2025 · 1,000 AUD</div>
+                      <div className="text-sm text-muted-foreground hidden md:block">Canceled · January 18, 2025</div>
                     </div>
                   </div>
-                  <div className="w-[128px] text-left">
+                  <div className="hidden md:block w-[128px] text-left">
                     <div className="font-medium text-left">1,000 AUD</div>
                     <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
                   </div>
-                  <div className="w-[100px] flex justify-end">
+                  <div className="md:w-[100px] flex justify-end">
                     <Button variant="secondary">See details</Button>
                   </div>
                 </div>
