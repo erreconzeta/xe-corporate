@@ -1,8 +1,9 @@
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { Sidebar } from "../components/Sidebar"
-import { Send, PlusCircle, RefreshCcw, Calendar } from "lucide-react"
+import { Send, PlusCircle, RefreshCcw, Calendar, Clock, Check, XCircle } from "lucide-react"
 import BalanceCard from "../components/BalanceCard"
+import { Avatar } from "@/components/ui/avatar"
 
 export function HomeScreen() {
   return (
@@ -16,12 +17,10 @@ export function HomeScreen() {
             <div className="flex h-14 items-center">
               <div className="max-w-[960px] w-full mx-auto px-4">
                 <div className="flex items-center gap-2 justify-end">
-                  <span className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-sm font-medium">
-                    SL
-                  </span>
+                  <Avatar initials="JM" />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium">Sky Compass Media LLC</span>
-                    <span className="text-xs text-muted-foreground">Daniel Moore</span>
+                    <span className="text-xs text-muted-foreground">James Mitchell</span>
                   </div>
                 </div>
               </div>
@@ -29,10 +28,10 @@ export function HomeScreen() {
           </div>
 
           {/* Main Content */}
-          <div className="p-4 max-w-[960px] w-full mx-auto">
+          <div className="p-4 lg:p-4 md:p-6 sm:p-4 w-full max-w-[960px] mx-auto overflow-x-hidden">
             {/* Welcome Header */}
             <div className="mb-8 text-left">
-              <h1 className="text-2xl font-semibold">Welcome, Sky Compass Media LLC</h1>
+              <h1 className="text-2xl font-semibold">Welcome, James Mitchell</h1>
               
               {/* Action Buttons */}
               <div className="flex gap-3 mt-4">
@@ -64,11 +63,8 @@ export function HomeScreen() {
                 </div>
                 <div className="mt-1 border-b border-input"></div>
               </div>
-              <div className="overflow-x-auto" style={{
-                scrollbarWidth: 'thin',
-                scrollbarColor: 'rgba(0,0,0,0.2) transparent'
-              }}>
-                <div className="flex gap-6 pb-4 min-w-full">
+              <div className="overflow-x-auto">
+                <div className="flex gap-6 pb-4 min-w-max">
                   <BalanceCard
                     title="Total Balance"
                     amount="12,345.67"
@@ -119,37 +115,66 @@ export function HomeScreen() {
                 <div className="mt-1 border-b border-input"></div>
               </div>
               
-              <div className="space-y-4">
-                {/* Transaction Items */}
-                <div className="flex justify-between items-center p-4 rounded-lg">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                      <span className="font-medium">Stephanie Sharkey</span>
+              {/* Transaction List */}
+              <div className="space-y-3">
+                {/* In Progress Transaction */}
+                <div className="flex justify-between items-center px-0 py-4 rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
                     </div>
-                    <div className="text-sm text-muted-foreground">In progress · January 18, 2025</div>
+                    <div>
+                      <div className="font-medium">Michael Anderson</div>
+                      <div className="text-sm text-muted-foreground">In progress · January 18, 2025</div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <div>1,000 AUD</div>
-                    <div className="text-sm text-muted-foreground">632.20 USD</div>
+                  <div className="w-[128px] text-left">
+                    <div className="font-medium text-left">1,000 AUD</div>
+                    <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
                   </div>
-                  <Button variant="secondary" size="sm">See details</Button>
+                  <div className="w-[100px] flex justify-end">
+                    <Button variant="secondary">See details</Button>
+                  </div>
                 </div>
 
                 {/* Completed Transaction */}
-                <div className="flex justify-between items-center p-4 rounded-lg">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                      <span className="font-medium">Stephanie Sharkey</span>
+                <div className="flex justify-between items-center px-0 py-4 rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                      <Check className="h-4 w-4 text-muted-foreground" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Completed · January 18, 2025</div>
+                    <div>
+                      <div className="font-medium">Sarah Thompson</div>
+                      <div className="text-sm text-muted-foreground">Completed · January 18, 2025</div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <div>1,000 AUD</div>
-                    <div className="text-sm text-muted-foreground">632.20 USD</div>
+                  <div className="w-[128px] text-left">
+                    <div className="font-medium text-left">1,000 AUD</div>
+                    <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
                   </div>
-                  <Button variant="secondary" size="sm">Resend</Button>
+                  <div className="w-[100px] flex justify-end">
+                    <Button variant="secondary">Resend</Button>
+                  </div>
+                </div>
+
+                {/* Canceled Transaction */}
+                <div className="flex justify-between items-center px-0 py-4 rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full border border-input flex items-center justify-center">
+                      <XCircle className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                    <div>
+                      <div className="font-medium">David Wilson</div>
+                      <div className="text-sm text-muted-foreground">Canceled · January 18, 2025</div>
+                    </div>
+                  </div>
+                  <div className="w-[128px] text-left">
+                    <div className="font-medium text-left">1,000 AUD</div>
+                    <div className="text-sm text-muted-foreground text-left">632.20 USD</div>
+                  </div>
+                  <div className="w-[100px] flex justify-end">
+                    <Button variant="secondary">See details</Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -164,51 +189,57 @@ export function HomeScreen() {
                 <div className="mt-1 border-b border-input"></div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {/* Recipient Cards */}
-                <div className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-2xl">AS</div>
+              <div className="overflow-x-auto">
+                <div className="flex gap-4 pb-4 min-w-max">
+                  {/* Robert Johnson */}
+                  <div className="p-4 border rounded-lg w-[280px]">
+                    <div className="flex flex-col gap-2">
+                      <Avatar initials="RJ" variant="secondary" size="lg" />
+                      <div className="font-medium">Robert Johnson</div>
+                      <div className="text-sm text-muted-foreground">Chase Bank ···· 4554</div>
+                      <div className="mt-2">🇻🇪</div>
+                    </div>
                   </div>
-                  <div className="font-medium">Alfred Skin</div>
-                  <div className="text-sm text-muted-foreground">Chase Bank ···· 4554</div>
-                  <div className="mt-2">🇻🇪</div>
-                </div>
 
-                <div className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-2xl">MT</div>
+                  {/* Emily Davis */}
+                  <div className="p-4 border rounded-lg w-[280px]">
+                    <div className="flex flex-col gap-2">
+                      <Avatar initials="ED" variant="secondary" size="lg" />
+                      <div className="font-medium">Emily Davis</div>
+                      <div className="text-sm text-muted-foreground">Wells Fargo ···· 1123</div>
+                      <div className="mt-2">🇪🇺</div>
+                    </div>
                   </div>
-                  <div className="font-medium">Marcos Torres</div>
-                  <div className="text-sm text-muted-foreground">Wells Fargo ···· 1123</div>
-                  <div className="mt-2">🇪🇺</div>
-                </div>
 
-                <div className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-2xl">CF</div>
+                  {/* Christopher Brown */}
+                  <div className="p-4 border rounded-lg w-[280px]">
+                    <div className="flex flex-col gap-2">
+                      <Avatar initials="CB" variant="secondary" size="lg" />
+                      <div className="font-medium">Christopher Brown</div>
+                      <div className="text-sm text-muted-foreground">Bankamai ···· 4565</div>
+                      <div className="mt-2">🇨🇦</div>
+                    </div>
                   </div>
-                  <div className="font-medium">Constantin Finkbeiner</div>
-                  <div className="text-sm text-muted-foreground">Bankamai ···· 4565</div>
-                  <div className="mt-2">🇨🇦</div>
-                </div>
 
-                <div className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-2xl">PB</div>
+                  {/* Jennifer Taylor */}
+                  <div className="p-4 border rounded-lg w-[280px]">
+                    <div className="flex flex-col gap-2">
+                      <Avatar initials="JT" variant="secondary" size="lg" />
+                      <div className="font-medium">Jennifer Taylor</div>
+                      <div className="text-sm text-muted-foreground">Banco Santander ···· 2233</div>
+                      <div className="mt-2">🇨🇱</div>
+                    </div>
                   </div>
-                  <div className="font-medium">Patricia Barrientos</div>
-                  <div className="text-sm text-muted-foreground">Banco Santander ···· 2233</div>
-                  <div className="mt-2">🇨🇱</div>
-                </div>
 
-                <div className="p-4 border rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="text-2xl">JS</div>
+                  {/* William Martinez */}
+                  <div className="p-4 border rounded-lg w-[280px]">
+                    <div className="flex flex-col gap-2">
+                      <Avatar initials="WM" variant="secondary" size="lg" />
+                      <div className="font-medium">William Martinez</div>
+                      <div className="text-sm text-muted-foreground">Chase Bank ···· 1324</div>
+                      <div className="mt-2">🇨🇱</div>
+                    </div>
                   </div>
-                  <div className="font-medium">John Sibert</div>
-                  <div className="text-sm text-muted-foreground">Chase Bank ···· 1324</div>
-                  <div className="mt-2">🇨🇱</div>
                 </div>
               </div>
             </div>
