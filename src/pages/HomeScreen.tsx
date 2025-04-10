@@ -4,6 +4,22 @@ import { Sidebar } from "../components/Sidebar"
 import { Send, PlusCircle, RefreshCcw, Calendar, Clock, Check, XCircle } from "lucide-react"
 import BalanceCard from "../components/BalanceCard"
 import { Avatar } from "@/components/ui/avatar"
+import { LineChart } from "@/components/ui/line-chart"
+
+// Sample data for the chart
+const chartData = [20.40, 20.45, 20.52, 20.60, 20.58, 20.55, 20.49, 20.51, 20.45, 20.40];
+const chartLabels = [
+  'Feb 13',
+  'Feb 14',
+  'Feb 15',
+  'Feb 16',
+  'Feb 17',
+  'Feb 18',
+  'Feb 19',
+  'Feb 20',
+  'Feb 21',
+  'Today',
+];
 
 export function HomeScreen() {
   return (
@@ -16,8 +32,8 @@ export function HomeScreen() {
           <div className="border-b border-input">
             <div className="flex h-14 items-center">
               <div className="max-w-[960px] w-full mx-auto px-4">
-                <div className="flex items-center gap-2 justify-end">
-                  <Avatar initials="JM" />
+                <div className="flex items-center gap-0 justify-end">
+                  <Avatar initials="JM" variant="outline" />
                   <div className="flex flex-col">
                     <span className="text-sm font-medium">Sky Compass Media LLC</span>
                     <span className="text-xs text-muted-foreground">James Mitchell</span>
@@ -192,52 +208,47 @@ export function HomeScreen() {
               <div className="overflow-x-auto">
                 <div className="flex gap-4 pb-4 min-w-max">
                   {/* Robert Johnson */}
-                  <div className="p-4 border rounded-lg w-[280px]">
+                  <div className="p-6 border rounded-lg w-[240px]">
                     <div className="flex flex-col gap-2">
-                      <Avatar initials="RJ" variant="secondary" size="lg" />
+                      <Avatar initials="RJ" variant="outline" size="lg" showFlag countryCode="ve" />
                       <div className="font-medium">Robert Johnson</div>
                       <div className="text-sm text-muted-foreground">Chase Bank ···· 4554</div>
-                      <div className="mt-2">🇻🇪</div>
                     </div>
                   </div>
 
                   {/* Emily Davis */}
-                  <div className="p-4 border rounded-lg w-[280px]">
+                  <div className="p-6 border rounded-lg w-[240px]">
                     <div className="flex flex-col gap-2">
-                      <Avatar initials="ED" variant="secondary" size="lg" />
+                      <Avatar initials="ED" variant="outline" size="lg" showFlag countryCode="eu" />
                       <div className="font-medium">Emily Davis</div>
                       <div className="text-sm text-muted-foreground">Wells Fargo ···· 1123</div>
-                      <div className="mt-2">🇪🇺</div>
                     </div>
                   </div>
 
                   {/* Christopher Brown */}
-                  <div className="p-4 border rounded-lg w-[280px]">
+                  <div className="p-6 border rounded-lg w-[240px]">
                     <div className="flex flex-col gap-2">
-                      <Avatar initials="CB" variant="secondary" size="lg" />
+                      <Avatar initials="CB" variant="outline" size="lg" showFlag countryCode="ca" />
                       <div className="font-medium">Christopher Brown</div>
                       <div className="text-sm text-muted-foreground">Bankamai ···· 4565</div>
-                      <div className="mt-2">🇨🇦</div>
                     </div>
                   </div>
 
                   {/* Jennifer Taylor */}
-                  <div className="p-4 border rounded-lg w-[280px]">
+                  <div className="p-6 border rounded-lg w-[240px]">
                     <div className="flex flex-col gap-2">
-                      <Avatar initials="JT" variant="secondary" size="lg" />
+                      <Avatar initials="JT" variant="outline" size="lg" showFlag countryCode="cl" />
                       <div className="font-medium">Jennifer Taylor</div>
                       <div className="text-sm text-muted-foreground">Banco Santander ···· 2233</div>
-                      <div className="mt-2">🇨🇱</div>
                     </div>
                   </div>
 
                   {/* William Martinez */}
-                  <div className="p-4 border rounded-lg w-[280px]">
+                  <div className="p-6 border rounded-lg w-[240px]">
                     <div className="flex flex-col gap-2">
-                      <Avatar initials="WM" variant="secondary" size="lg" />
+                      <Avatar initials="WM" variant="outline" size="lg" showFlag countryCode="cl" />
                       <div className="font-medium">William Martinez</div>
                       <div className="text-sm text-muted-foreground">Chase Bank ···· 1324</div>
-                      <div className="mt-2">🇨🇱</div>
                     </div>
                   </div>
                 </div>
@@ -254,12 +265,13 @@ export function HomeScreen() {
                 <div className="mt-1 border-b border-input"></div>
               </div>
 
-              <div className="p-4 border rounded-lg">
+              <div className="p-6 border rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    {/* Graph placeholder */}
-                    <div className="h-40 bg-muted rounded-md mb-4"></div>
-                    <div className="flex justify-between text-sm text-muted-foreground">
+                    <div className="h-40">
+                      <LineChart data={chartData} labels={chartLabels} className="h-full" />
+                    </div>
+                    <div className="flex justify-between text-sm text-muted-foreground mt-2">
                       <span>Feb 13</span>
                       <span>Today</span>
                     </div>

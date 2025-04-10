@@ -55,6 +55,10 @@ export function ComponentsScreen() {
                 <Avatar initials="SC" variant="secondary" size="lg" />
                 <span className="text-sm text-muted-foreground">Secondary</span>
               </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar initials="SS" variant="secondary" size="lg" showFlag countryCode="ab" />
+                <span className="text-sm text-muted-foreground">With Flag</span>
+              </div>
             </div>
           </div>
 
@@ -65,7 +69,7 @@ export function ComponentsScreen() {
               {/* User Profile Example */}
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center gap-3">
-                  <Avatar initials="JD" variant="primary" />
+                  <Avatar initials="JD" variant="primary" showFlag countryCode="us" />
                   <div>
                     <div className="font-medium">John Doe</div>
                     <div className="text-sm text-muted-foreground">john.doe@example.com</div>
@@ -77,10 +81,33 @@ export function ComponentsScreen() {
               <div className="p-4 border rounded-lg">
                 <h4 className="font-medium mb-3">Team Members</h4>
                 <div className="flex gap-2">
-                  <Avatar initials="AB" variant="primary" size="sm" />
-                  <Avatar initials="CD" variant="secondary" size="sm" />
-                  <Avatar initials="EF" variant="primary" size="sm" />
-                  <Avatar initials="GH" variant="secondary" size="sm" />
+                  <Avatar initials="AB" variant="primary" size="sm" showFlag countryCode="gb" />
+                  <Avatar initials="CD" variant="secondary" size="sm" showFlag countryCode="de" />
+                  <Avatar initials="EF" variant="primary" size="sm" showFlag countryCode="fr" />
+                  <Avatar initials="GH" variant="secondary" size="sm" showFlag countryCode="it" />
+                </div>
+              </div>
+
+              {/* Flag Sizes Example */}
+              <div className="p-4 border rounded-lg">
+                <h4 className="font-medium mb-3">Flag Sizes</h4>
+                <div className="flex items-center gap-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <Avatar initials="SM" size="sm" showFlag countryCode="es" />
+                    <span className="text-sm text-muted-foreground">Small</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Avatar initials="MD" size="md" showFlag countryCode="pt" />
+                    <span className="text-sm text-muted-foreground">Medium</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Avatar initials="LG" size="lg" showFlag countryCode="nl" />
+                    <span className="text-sm text-muted-foreground">Large</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Avatar initials="XL" size="xl" showFlag countryCode="be" />
+                    <span className="text-sm text-muted-foreground">Extra Large</span>
+                  </div>
                 </div>
               </div>
             </div>
