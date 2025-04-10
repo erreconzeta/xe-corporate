@@ -1,7 +1,7 @@
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { Sidebar } from "../components/Sidebar"
-import { Send, PlusCircle, RefreshCcw, Calendar } from "lucide-react"
+import { Send, PlusCircle, RefreshCcw, Calendar, ArrowRight } from "lucide-react"
 import BalanceCard from "../components/BalanceCard"
 
 export function HomeScreen() {
@@ -16,6 +16,14 @@ export function HomeScreen() {
             <div className="flex h-14 items-center">
               <div className="max-w-[960px] w-full mx-auto px-4">
                 <div className="flex items-center gap-2 justify-end">
+                  <Button 
+                    variant="default" 
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center gap-2 mr-auto"
+                  >
+                    <Send className="h-4 w-4" />
+                    Quick Transfer
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
                   <span className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-sm font-medium">
                     SL
                   </span>
@@ -36,10 +44,6 @@ export function HomeScreen() {
               
               {/* Action Buttons */}
               <div className="flex gap-3 mt-4">
-                <Button variant="default" className="flex items-center gap-2">
-                  <Send className="h-4 w-4" />
-                  Quick transfer
-                </Button>
                 <Button variant="secondary" className="flex items-center gap-2">
                   <PlusCircle className="h-4 w-4" />
                   Add funds
