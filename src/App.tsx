@@ -4,6 +4,7 @@ import { ComponentsLibrary } from "./pages/ComponentsLibrary"
 import { HomeScreen } from "./pages/HomeScreen"
 import { QuickTransfer } from "./pages/QuickTransfer"
 import { Send } from "lucide-react"
+import { ComponentsScreen } from "./pages/ComponentsScreen"
 import './App.css'
 
 function Welcome() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/components" element={<ComponentsLibrary />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/quick-transfer" element={<QuickTransfer />} />
+        <Route path="/new" element={<ComponentsScreen />} />
       </Routes>
     </Router>
   )
