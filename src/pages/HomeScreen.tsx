@@ -84,37 +84,37 @@ export function HomeScreen() {
               <div className="overflow-x-auto">
                 <div className="flex gap-6 pb-4 min-w-max">
                   <BalanceCard
-                    title="Total Balance"
+                    title="Total balance"
                     amount="12,345.67"
                     currency="USD"
                     countryCode="US"
                   />
                   <BalanceCard
-                    title="EUR Balance"
+                    title="Total balance"
                     amount="8,901.23"
                     currency="EUR"
                     countryCode="DE"
                   />
                   <BalanceCard
-                    title="GBP Balance"
+                    title="Total balance"
                     amount="5,678.90"
                     currency="GBP"
                     countryCode="GB"
                   />
                   <BalanceCard
-                    title="JPY Balance"
+                    title="Total balance"
                     amount="150,432.00"
                     currency="JPY"
                     countryCode="JP"
                   />
                   <BalanceCard
-                    title="CAD Balance"
+                    title="Total balance"
                     amount="7,890.45"
                     currency="CAD"
                     countryCode="CA"
                   />
                   <BalanceCard
-                    title="AUD Balance"
+                    title="Total balance"
                     amount="9,123.78"
                     currency="AUD"
                     countryCode="AU"
