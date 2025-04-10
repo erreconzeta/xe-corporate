@@ -1,22 +1,32 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Button } from "./components/ui/button"
 import { ComponentsLibrary } from "./pages/ComponentsLibrary"
-import { ComponentsScreen } from "./pages/ComponentsScreen"
 import { HomeScreen } from "./pages/HomeScreen"
+import { QuickTransfer } from "./pages/QuickTransfer"
+import { Send } from "lucide-react"
 import './App.css'
 
-function Home() {
+function Welcome() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4">
       <h1 className="text-4xl font-bold">Xe Corporate</h1>
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap justify-center">
+        <Link to="/quick-transfer">
+          <Button 
+            variant="default" 
+            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center gap-2"
+          >
+            <Send className="h-4 w-4" />
+            Quick Transfer
+          </Button>
+        </Link>
         <Link to="/home">
-          <Button className="bg-green-600 hover:bg-green-700">Home screen</Button>
+          <Button variant="default">Home screen</Button>
         </Link>
         <Link to="/components">
           <Button>Components library</Button>
         </Link>
-        <Link to="/components-new">
+        <Link to="/new">
           <Button>New Components</Button>
         </Link>
       </div>
@@ -28,10 +38,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/components" element={<ComponentsLibrary />} />
-        <Route path="/components-new" element={<ComponentsScreen />} />
         <Route path="/home" element={<HomeScreen />} />
+        <Route path="/quick-transfer" element={<QuickTransfer />} />
       </Routes>
     </Router>
   )
