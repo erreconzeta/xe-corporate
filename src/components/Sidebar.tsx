@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Button } from "./ui/button"
 import { Menu, X } from "lucide-react"
 import {
@@ -14,6 +14,10 @@ interface SidebarContentProps {
 }
 
 function SidebarContent({ className, isMobile = false }: SidebarContentProps) {
+  const location = useLocation();
+  const isHome = location.pathname === '/home';
+  const isTransactions = location.pathname === '/transactions';
+  
   return (
     <div className={`flex flex-col ${className} h-full`}>
       {/* Logo section - hidden on mobile */}
@@ -35,7 +39,7 @@ function SidebarContent({ className, isMobile = false }: SidebarContentProps) {
       {/* Navigation Links */}
       <nav className="flex-1 overflow-y-auto">
         <div className={`space-y-3 p-4 ${isMobile ? "max-h-[calc(100vh-180px)] overflow-y-auto overflow-x-auto" : ""}`}>
-          <Link to="/" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} bg-accent transition-colors duration-200`}>
+          <Link to="/home" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} ${isHome ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'} transition-colors duration-200`}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
               <polyline points="9 22 9 12 15 12 15 22" />
@@ -49,7 +53,7 @@ function SidebarContent({ className, isMobile = false }: SidebarContentProps) {
             </svg>
             Balances
           </Link>
-          <Link to="/transactions" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200`}>
+          <Link to="/transactions" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} ${isTransactions ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'} transition-all duration-200`}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>

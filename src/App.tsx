@@ -3,8 +3,9 @@ import { Button } from "./components/ui/button"
 import { ComponentsLibrary } from "./pages/ComponentsLibrary"
 import { HomeScreen } from "./pages/HomeScreen"
 import { QuickTransfer } from "./pages/QuickTransfer"
-import { Send } from "lucide-react"
+import { Send, ListFilter } from "lucide-react"
 import { ComponentsScreen } from "./pages/ComponentsScreen"
+import { TransactionsScreen } from "./pages/TransactionsScreen"
 import './App.css'
 
 function Welcome() {
@@ -23,6 +24,12 @@ function Welcome() {
         </Link>
         <Link to="/home">
           <Button variant="default">Home screen</Button>
+        </Link>
+        <Link to="/transactions">
+          <Button variant="default" className="flex items-center gap-2">
+            <ListFilter className="h-4 w-4" />
+            Transactions
+          </Button>
         </Link>
         <Link to="/components">
           <Button>Components library</Button>
@@ -45,6 +52,7 @@ function App() {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/quick-transfer" element={<QuickTransfer />} />
         <Route path="/new" element={<ComponentsScreen />} />
+        <Route path="/transactions" element={<TransactionsScreen />} />
       </Routes>
     </Router>
   )
