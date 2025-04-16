@@ -1,5 +1,4 @@
 import { Button } from "../components/ui/button"
-import { Link } from "react-router-dom"
 import { Sidebar } from "../components/Sidebar"
 import { Send, PlusCircle, RefreshCcw, Calendar, Clock, Check, XCircle } from "lucide-react"
 import BalanceCard from "../components/BalanceCard"

@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { DE, FR, ES, IT, PL, US, EU, GB, JP, CH } from 'country-flag-icons/react/3x2'
 import React from 'react'
 import { DayPicker } from 'react-day-picker'
-import { format, isBefore, startOfToday } from 'date-fns'
+import { format, startOfToday } from 'date-fns'
 import 'react-day-picker/dist/style.css'
 import { cn } from "../../lib/utils"
 import { getCountryFlag } from "../../components/flags"

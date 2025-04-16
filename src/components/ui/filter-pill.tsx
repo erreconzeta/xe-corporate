@@ -1,4 +1,3 @@
-import { Filter } from "lucide-react"
 import { TransactionStatus } from "./status-pill"
 
 type FilterStatus = TransactionStatus | "all"

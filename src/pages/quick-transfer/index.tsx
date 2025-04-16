@@ -1,16 +1,18 @@
 "use client"
 
-import { Button } from "../../components/ui/button"
-import { X, Calendar, ChevronDown, Search, Plus, ChevronRight } from "lucide-react"
-import { Link, useLocation } from "react-router-dom"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "../../components/ui/label"
+import { X, ChevronDown, Search, Plus, ChevronRight } from "lucide-react"
+import { useLocation } from "react-router-dom"
 import * as Select from '@radix-ui/react-select'
 import * as Dialog from '@radix-ui/react-dialog'
-import * as Popover from '@radix-ui/react-popover'
-import { useState } from 'react'
+import { useState } from "react"
+import { startOfToday } from 'date-fns'
 import { DE, FR, ES, IT, PL, US, EU, GB, JP, CH } from 'country-flag-icons/react/3x2'
 import React from 'react'
 import { DayPicker } from 'react-day-picker'
-import { format, isBefore, startOfToday } from 'date-fns'
+import { format, isBefore } from 'date-fns'
 import 'react-day-picker/dist/style.css'
 import { cn } from "../../lib/utils"
 import { getCountryFlag } from "../../components/flags"
@@ -87,7 +89,7 @@ const reasons: Reason[] = [
   { id: 5, name: "Investment" }
 ]
 
-export function QuickTransfer() {
+export default function QuickTransfer() {
   const location = useLocation()
   const initialRecipient = location.state?.selectedRecipient || recipients[0]
   

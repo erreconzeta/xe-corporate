@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function getCountryFlag(countryCode: string) {
   // Special handling for EUR/EU
   if (countryCode === "EUR") countryCode = "eu"

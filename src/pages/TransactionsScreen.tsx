@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Sidebar } from "@/components/Sidebar"
-import { Send, Plus, RefreshCcw, Calendar, Share, Download, Filter } from "lucide-react"
+import { Send, Plus, RefreshCcw, Calendar, Download } from "lucide-react"
 import { AlertWithClose, AlertDescription } from "@/components/ui/alert"
 import { TransactionTable } from "@/components/TransactionTable"
 import { Avatar } from "@/components/ui/avatar"
 import { useState } from "react"
-import { cn } from "@/lib/utils"
 
 export function TransactionsScreen() {
   const [showAlert, setShowAlert] = useState(true)

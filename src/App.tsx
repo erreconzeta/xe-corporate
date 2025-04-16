@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { Button } from "./components/ui/button"
 import { ComponentsLibrary } from "./pages/ComponentsLibrary"
 import { HomeScreen } from "./pages/HomeScreen"
-import { BookaForward } from "./pages/book-a-forward"
-import { QuickTransfer } from "./pages/quick-transfer"
+import { BookAForward } from "./pages/book-a-forward"
+import QuickTransfer from "./pages/quick-transfer"
 import { Send, ListFilter } from "lucide-react"
 import { ComponentsScreen } from "./pages/ComponentsScreen"
 import { TransactionsScreen } from "./pages/TransactionsScreen"
@@ -63,7 +63,7 @@ function App() {
         <Route path="/quick-transfer" element={<QuickTransfer />} />
         <Route path="/new" element={<ComponentsScreen />} />
         <Route path="/transactions" element={<TransactionsScreen />} />
-        <Route path="/book-a-forward" element={<BookaForward />} />
+        <Route path="/book-a-forward" element={<BookAForward />} />
       </Routes>
     </Router>
   )

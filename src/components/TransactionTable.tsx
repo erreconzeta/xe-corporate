@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Filter, ChevronsUpDown, ChevronDown, ChevronRight } from "lucide-react"
+import { ChevronsUpDown, ChevronDown, ChevronRight } from "lucide-react"
 import {
   Table,
   TableBody,
@@ -211,16 +211,6 @@ export function TransactionTable() {
       return <ChevronsUpDown className="h-4 w-4 text-foreground" />
     }
     return <ChevronsUpDown className="h-4 w-4 text-muted-foreground/50" />
-  }
-
-  const getStatusIcon = (status: FilterStatus) => {
-    if (status === 'all') return <Filter className="h-4 w-4 text-gray-600" />
-    return null
-  }
-
-  const getStatusStyle = (status: FilterStatus) => {
-    if (status === 'all') return 'bg-gray-50 text-gray-700 border-gray-200'
-    return ''
   }
 
   return (
