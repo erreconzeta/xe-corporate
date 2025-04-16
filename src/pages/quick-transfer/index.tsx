@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom"
 import * as Select from '@radix-ui/react-select'
 import * as Dialog from '@radix-ui/react-dialog'
 import { useState } from "react"
-import { startOfToday } from 'date-fns'
 import { DE, FR, ES, IT, PL, US, EU, GB, JP, CH } from 'country-flag-icons/react/3x2'
 import React from 'react'
 import { getCountryFlag } from "../../components/flags"
@@ -30,12 +29,6 @@ interface Recipient {
   accountNumber: string
   country: string
   email: string
-}
-
-interface Reason {
-  id: string
-  name: string
-  description: string
 }
 
 const recipients: Recipient[] = [
@@ -76,14 +69,6 @@ const recipients: Recipient[] = [
   }
 ]
 
-const reasons: Reason[] = [
-  { id: "1", name: "Salary", description: "" },
-  { id: "2", name: "Business expenses", description: "" },
-  { id: "3", name: "Services", description: "" },
-  { id: "4", name: "Goods", description: "" },
-  { id: "5", name: "Investment", description: "" }
-]
-
 export default function QuickTransfer() {
   const location = useLocation()
   const initialRecipient = location.state?.selectedRecipient || recipients[0]
@@ -96,7 +81,6 @@ export default function QuickTransfer() {
   const [receiveAmount, setReceiveAmount] = useState("908.70")
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
   const [termsAccepted, setTermsAccepted] = useState(false)
-  const [selectedReason, setSelectedReason] = useState<Reason | null>(null)
 
   const formatAmount = (value: string) => {
     // Remove all non-numeric characters except decimal point
@@ -482,24 +466,6 @@ export default function QuickTransfer() {
                       </Dialog.Content>
                     </Dialog.Portal>
                   </Dialog.Root>
-
-                  {/* Reason of Transfer */}
-                  <div className="cursor-pointer">
-                    <div className="flex h-[52px] items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-[50px] h-[50px] rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-                          <ChevronDown className="h-5 w-5 text-gray-600" />
-                        </div>
-                        <div className="flex flex-col">
-                          <p className="text-sm text-gray-500">Reason of transfer</p>
-                          <span className="text-[15px] font-medium text-gray-900">{selectedReason?.name || 'Select reason of transfer'}</span>
-                        </div>
-                      </div>
-                      <Button variant="ghost" className="text-[14px] font-medium text-gray-600 bg-gray-100 px-4 py-2.5 rounded-lg">
-                        Change
-                      </Button>
-                    </div>
-                  </div>
                 </div>
               </div>
 
