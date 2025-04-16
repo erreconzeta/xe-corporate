@@ -2,7 +2,7 @@
 
 import { Button } from "../../components/ui/button"
 import { X, Calendar, ChevronDown, Search, Plus, ChevronRight, ArrowLeft } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import * as Select from '@radix-ui/react-select'
 import * as Popover from '@radix-ui/react-popover'
 import { useState } from 'react'
@@ -70,7 +70,7 @@ const balances = [
 
 type PaymentType = "recipient" | "balance"
 
-export function BookaForward() {
+export function BookAForward() {
   const navigate = useNavigate()
   const [currentStep, setCurrentStep] = useState<'recipient' | 'calculator'>('recipient')
   const [recipientSearch, setRecipientSearch] = useState("")

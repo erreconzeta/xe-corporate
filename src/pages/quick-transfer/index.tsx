@@ -39,8 +39,9 @@ interface Recipient {
 }
 
 interface Reason {
-  id: number
+  id: string
   name: string
+  description: string
 }
 
 const recipients: Recipient[] = [
@@ -82,30 +83,26 @@ const recipients: Recipient[] = [
 ]
 
 const reasons: Reason[] = [
-  { id: 1, name: "Salary" },
-  { id: 2, name: "Business expenses" },
-  { id: 3, name: "Services" },
-  { id: 4, name: "Goods" },
-  { id: 5, name: "Investment" }
+  { id: "1", name: "Salary", description: "" },
+  { id: "2", name: "Business expenses", description: "" },
+  { id: "3", name: "Services", description: "" },
+  { id: "4", name: "Goods", description: "" },
+  { id: "5", name: "Investment", description: "" }
 ]
 
 export default function QuickTransfer() {
   const location = useLocation()
   const initialRecipient = location.state?.selectedRecipient || recipients[0]
-  
-  const [currentStep, setCurrentStep] = useState<'initial' | 'recipient' | 'calculator'>('initial')
   const [selectedRecipient, setSelectedRecipient] = useState(initialRecipient)
+  const [currentStep, setCurrentStep] = useState<'initial' | 'recipient' | 'calculator'>('initial')
   const [recipientSearch, setRecipientSearch] = useState("")
   const [sendCurrency, setSendCurrency] = useState("USD")
   const [receiveCurrency, setReceiveCurrency] = useState("EUR")
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date('2025-06-17'))
   const [sendAmount, setSendAmount] = useState("1000.00")
   const [receiveAmount, setReceiveAmount] = useState("908.70")
-  const [isOpen, setIsOpen] = useState(false)
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
-  const [selectedReason, setSelectedReason] = useState<Reason | null>(null)
   const [termsAccepted, setTermsAccepted] = useState(false)
-  const [showRecipientSelection, setShowRecipientSelection] = useState(false)
+  const [selectedReason, setSelectedReason] = useState<Reason | null>(null)
 
   const euCountries = ["ES", "DE", "FR", "IT", "NL"]
 
@@ -353,7 +350,6 @@ export default function QuickTransfer() {
                     <Select.Root value={selectedRecipient.id.toString()} onValueChange={handleRecipientSelect}>
                       <Select.Trigger 
                         className="w-full flex items-center justify-between p-4 bg-white hover:bg-gray-50 rounded-lg transition-colors"
-                        onClick={() => setShowRecipientSelection(true)}
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
