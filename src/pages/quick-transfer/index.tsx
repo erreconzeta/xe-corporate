@@ -1,8 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "../../components/ui/label"
 import { X, ChevronDown, Search, Plus, ChevronRight } from "lucide-react"
 import { useLocation } from "react-router-dom"
 import * as Select from '@radix-ui/react-select'
@@ -11,10 +9,6 @@ import { useState } from "react"
 import { startOfToday } from 'date-fns'
 import { DE, FR, ES, IT, PL, US, EU, GB, JP, CH } from 'country-flag-icons/react/3x2'
 import React from 'react'
-import { DayPicker } from 'react-day-picker'
-import { format, isBefore } from 'date-fns'
-import 'react-day-picker/dist/style.css'
-import { cn } from "../../lib/utils"
 import { getCountryFlag } from "../../components/flags"
 
 const CountryFlags: Record<string, React.ComponentType<any>> = {
@@ -104,8 +98,6 @@ export default function QuickTransfer() {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [selectedReason, setSelectedReason] = useState<Reason | null>(null)
 
-  const euCountries = ["ES", "DE", "FR", "IT", "NL"]
-
   const formatAmount = (value: string) => {
     // Remove all non-numeric characters except decimal point
     let number = value.replace(/[^\d.]/g, '')
@@ -161,8 +153,6 @@ export default function QuickTransfer() {
       setSendAmount(formatAmount(calculatedSend))
     }
   }
-
-  const disabledDays = { before: startOfToday() }
 
   const filteredRecipients = recipients.filter(recipient => 
     recipient.name.toLowerCase().includes(recipientSearch.toLowerCase()) ||
