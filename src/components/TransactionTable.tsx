@@ -8,16 +8,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuCheckboxItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { useState } from "react"
 import { StatusPill, TransactionStatus } from "./ui/status-pill"
 import { FilterPill } from "./ui/filter-pill"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 type FilterStatus = TransactionStatus | "all"
 
