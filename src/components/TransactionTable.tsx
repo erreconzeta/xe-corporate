@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowUpRight, MoreHorizontal, Check, Clock, XCircle, Filter, ChevronDown, ChevronRight, ChevronsUpDown } from "lucide-react"
+import { ArrowUpRight, MoreHorizontal, Check, Clock, XCircle, Filter, ChevronDown, ChevronRight, ChevronsUpDown, Plus, Download } from "lucide-react"
 import {
   Table,
   TableBody,
@@ -15,10 +15,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
+import { StatusPill, TransactionStatus } from "./ui/status-pill"
+import { FilterPill } from "./ui/filter-pill"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+
+type FilterStatus = TransactionStatus | "all"
 
 interface Transaction {
   id: string
-  status: "all" | "pending_approval" | "action_required" | "scheduled" | "in_progress" | "completed" | "canceled"
+  status: TransactionStatus
   valueDate: string
   contractType: string
   recipient: {
@@ -145,7 +150,7 @@ const transactions: Transaction[] = [
 ]
 
 export function TransactionTable() {
-  const [filterPills, setFilterPills] = useState<Transaction['status'][]>(['all'])
+  const [filterPills, setFilterPills] = useState<FilterStatus[]>(["all"])
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: null })
 
@@ -216,64 +221,32 @@ export function TransactionTable() {
     return <ChevronsUpDown className="h-4 w-4 text-muted-foreground/50" />
   }
 
-  const getStatusIcon = (status: Transaction['status']) => {
-    switch (status) {
-      case 'all':
-        return <Filter className="h-4 w-4 text-gray-600" />
-      case 'pending_approval':
-        return <Clock className="h-4 w-4 text-yellow-600" />
-      case 'action_required':
-        return <ArrowUpRight className="h-4 w-4 text-orange-600" />
-      case 'scheduled':
-        return <Clock className="h-4 w-4 text-purple-600" />
-      case 'in_progress':
-        return <Clock className="h-4 w-4 text-blue-600" />
-      case 'completed':
-        return <Check className="h-4 w-4 text-green-600" />
-      case 'canceled':
-        return <XCircle className="h-4 w-4 text-red-600" />
-    }
+  const getStatusIcon = (status: FilterStatus) => {
+    if (status === 'all') return <Filter className="h-4 w-4 text-gray-600" />
+    return null
   }
 
-  const getStatusStyle = (status: Transaction['status']) => {
-    switch (status) {
-      case 'all':
-        return 'bg-gray-50 text-gray-700 border-gray-200'
-      case 'pending_approval':
-        return 'bg-yellow-50 text-yellow-700 border-yellow-200'
-      case 'action_required':
-        return 'bg-orange-50 text-orange-700 border-orange-200'
-      case 'scheduled':
-        return 'bg-purple-50 text-purple-700 border-purple-200'
-      case 'in_progress':
-        return 'bg-blue-50 text-blue-700 border-blue-200'
-      case 'completed':
-        return 'bg-green-50 text-green-700 border-green-200'
-      case 'canceled':
-        return 'bg-red-50 text-red-700 border-red-200'
-    }
+  const getStatusStyle = (status: FilterStatus) => {
+    if (status === 'all') return 'bg-gray-50 text-gray-700 border-gray-200'
+    return ''
   }
 
   return (
     <div className="w-full">
       {/* Filter Pills - Moved outside of scrollable container */}
-      <div className="grid gap-2 mb-4" style={{ gridTemplateColumns: '80px repeat(6, 1fr)' }}>
-        <button
+      <div className="grid gap-2 mb-6" style={{ gridTemplateColumns: '80px repeat(6, 1fr)' }}>
+        <FilterPill
+          status="all"
+          count={transactions.length}
+          isSelected={filterPills.includes('all')}
           onClick={() => setFilterPills(['all'])}
-          className={`flex flex-col items-start w-full px-3 py-2 rounded-md border text-sm ${
-            filterPills.includes('all') 
-              ? 'bg-accent text-accent-foreground border-primary' 
-              : 'border-input text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-          }`}
-        >
-          <span className="whitespace-nowrap">All</span>
-          <span className="inline-flex items-center justify-center rounded-full border border-input w-5 h-5 text-xs">
-            {transactions.length}
-          </span>
-        </button>
+        />
         {(['pending_approval', 'action_required', 'scheduled', 'in_progress', 'completed', 'canceled'] as const).map((status) => (
-          <button
+          <FilterPill
             key={status}
+            status={status}
+            count={transactions.filter(t => t.status === status).length}
+            isSelected={filterPills.includes(status)}
             onClick={() => {
               setFilterPills(prev => {
                 if (prev.includes(status)) {
@@ -284,17 +257,7 @@ export function TransactionTable() {
                 }
               })
             }}
-            className={`flex flex-col items-start w-full px-3 py-2 rounded-md border text-sm ${
-              filterPills.includes(status) 
-                ? 'bg-accent text-accent-foreground border-primary' 
-                : 'border-input text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-            }`}
-          >
-            <span className="whitespace-nowrap">{status.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</span>
-            <span className="inline-flex items-center justify-center rounded-full border border-input w-5 h-5 text-xs">
-              {transactions.filter(t => t.status === status).length}
-            </span>
-          </button>
+          />
         ))}
       </div>
 
@@ -303,7 +266,7 @@ export function TransactionTable() {
           <Table>
             <TableHeader className="[&_tr]:border-b-0">
               <TableRow className="bg-accent/50">
-                <TableHead className="w-[50px] h-11 text-sm font-medium text-muted-foreground rounded-l-lg">
+                <TableHead className="w-[32px] h-11 text-sm font-medium text-muted-foreground rounded-l-lg">
                   {/* Empty header cell for expand/collapse column */}
                 </TableHead>
                 <TableHead className="w-[140px] h-11 text-sm font-medium text-muted-foreground">
@@ -412,23 +375,29 @@ export function TransactionTable() {
                 <>
                   <TableRow 
                     key={transaction.id}
-                    className={`cursor-pointer hover:bg-accent/30 ${
+                    className={`hover:bg-accent/30 ${
                       index === sortedTransactions.length - 1 && !expandedRows.has(transaction.id) ? 'border-b-0' : ''
                     }`}
-                    onClick={() => toggleRow(transaction.id)}
                   >
-                    <TableCell className="w-[50px]">
-                      {expandedRows.has(transaction.id) ? (
-                        <ChevronDown className="h-4 w-4" />
-                      ) : (
-                        <ChevronRight className="h-4 w-4" />
-                      )}
+                    <TableCell className="w-[32px] pr-0">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleRow(transaction.id);
+                        }}
+                      >
+                        {expandedRows.has(transaction.id) ? (
+                          <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                        )}
+                      </Button>
                     </TableCell>
                     <TableCell className="w-[140px]">
-                      <div className={`inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium border truncate ${getStatusStyle(transaction.status)}`}>
-                        {getStatusIcon(transaction.status)}
-                        <span className="truncate">{transaction.status.replace('_', ' ')}</span>
-                      </div>
+                      <StatusPill status={transaction.status} />
                     </TableCell>
                     <TableCell className="w-[120px] whitespace-nowrap">{transaction.valueDate}</TableCell>
                     <TableCell className="w-[120px] whitespace-nowrap">{transaction.contractType}</TableCell>

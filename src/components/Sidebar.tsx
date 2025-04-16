@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
 import { Button } from "./ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowLeftRight } from "lucide-react"
 import {
   Sheet,
   SheetContent,
@@ -54,9 +54,7 @@ function SidebarContent({ className, isMobile = false }: SidebarContentProps) {
             Balances
           </Link>
           <Link to="/transactions" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} ${isTransactions ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'} transition-all duration-200`}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
+            <ArrowLeftRight className="h-5 w-5" />
             Transactions
           </Link>
           <Link to="/recipients" className={`flex items-center gap-2 px-3 py-3 text-sm font-medium rounded-md ${isMobile ? "min-w-[200px] whitespace-nowrap" : ""} text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-200`}>

@@ -16,11 +16,18 @@ const sizeClasses = {
   xl: "h-12 w-12 text-lg"
 }
 
+const containerSizeClasses = {
+  sm: "w-6",
+  md: "w-8",
+  lg: "w-10",
+  xl: "w-12"
+}
+
 const flagSizeClasses = {
-  sm: "w-3 h-3 -bottom-0.5 -right-0.5",
+  sm: "w-3 h-3 -bottom-1 -right-1",
   md: "w-4 h-4 -bottom-1 -right-1",
-  lg: "w-5 h-5 -bottom-1 -right-1",
-  xl: "w-6 h-6 -bottom-1 -right-1"
+  lg: "w-5 h-5 -bottom-1.5 -right-1.5",
+  xl: "w-6 h-6 -bottom-1.5 -right-1.5"
 }
 
 const variantClasses = {
@@ -39,7 +46,7 @@ export function Avatar({
   ...props 
 }: AvatarProps) {
   return (
-    <div className="relative inline-flex w-[2.75rem]">
+    <div className={cn("relative inline-flex", containerSizeClasses[size])}>
       <div
         className={cn(
           "rounded-full flex items-center justify-center font-medium",

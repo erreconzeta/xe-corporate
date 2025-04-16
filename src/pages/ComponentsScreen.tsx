@@ -2,6 +2,8 @@ import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Link } from "react-router-dom"
+import { StatusPill } from "@/components/ui/status-pill"
+import { FilterPill } from "@/components/ui/filter-pill"
 
 export function ComponentsScreen() {
   return (
@@ -112,6 +114,155 @@ export function ComponentsScreen() {
                         <span className="text-sm text-muted-foreground">Extra Large</span>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* StatusPill Component Card */}
+          <Card className="p-6">
+            <h2 className="text-2xl font-semibold mb-6">Status Pill</h2>
+            
+            {/* Basic Examples */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-medium mb-4">Basic Examples</h3>
+                <div className="flex flex-wrap gap-4">
+                  <StatusPill status="pending_approval" />
+                  <StatusPill status="action_required" />
+                  <StatusPill status="scheduled" />
+                  <StatusPill status="in_progress" />
+                  <StatusPill status="completed" />
+                  <StatusPill status="canceled" />
+                </div>
+              </div>
+
+              {/* Without Icons */}
+              <div>
+                <h3 className="text-lg font-medium mb-4">Without Icons</h3>
+                <div className="flex flex-wrap gap-4">
+                  <StatusPill status="pending_approval" showIcon={false} />
+                  <StatusPill status="action_required" showIcon={false} />
+                  <StatusPill status="scheduled" showIcon={false} />
+                  <StatusPill status="in_progress" showIcon={false} />
+                  <StatusPill status="completed" showIcon={false} />
+                  <StatusPill status="canceled" showIcon={false} />
+                </div>
+              </div>
+
+              {/* Examples in Context */}
+              <div>
+                <h3 className="text-lg font-medium mb-4">Examples in Context</h3>
+                <div className="space-y-4">
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <StatusPill status="completed" />
+                      <div>
+                        <div className="font-medium">Payment to John Doe</div>
+                        <div className="text-sm text-muted-foreground">Transaction completed successfully</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <StatusPill status="pending_approval" />
+                      <div>
+                        <div className="font-medium">Transfer to Bank Account</div>
+                        <div className="text-sm text-muted-foreground">Awaiting approval from admin</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* FilterPill Component Card */}
+          <Card className="p-6">
+            <h2 className="text-2xl font-semibold mb-6">Filter Pill</h2>
+            
+            {/* Basic Examples */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-medium mb-4">Basic Examples</h3>
+                <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))' }}>
+                  <FilterPill
+                    status="all"
+                    count={11}
+                    isSelected={true}
+                    onClick={() => {}}
+                  />
+                  <FilterPill
+                    status="pending_approval"
+                    count={2}
+                    isSelected={false}
+                    onClick={() => {}}
+                  />
+                  <FilterPill
+                    status="action_required"
+                    count={3}
+                    isSelected={false}
+                    onClick={() => {}}
+                  />
+                </div>
+              </div>
+
+              {/* Selected State */}
+              <div>
+                <h3 className="text-lg font-medium mb-4">Selected State</h3>
+                <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))' }}>
+                  <FilterPill
+                    status="completed"
+                    count={5}
+                    isSelected={true}
+                    onClick={() => {}}
+                  />
+                  <FilterPill
+                    status="in_progress"
+                    count={4}
+                    isSelected={true}
+                    onClick={() => {}}
+                  />
+                  <FilterPill
+                    status="canceled"
+                    count={1}
+                    isSelected={false}
+                    onClick={() => {}}
+                  />
+                </div>
+              </div>
+
+              {/* Example in Context */}
+              <div>
+                <h3 className="text-lg font-medium mb-4">Example in Context</h3>
+                <div className="border rounded-lg p-4">
+                  <h4 className="text-sm font-medium mb-3">Transaction Filters</h4>
+                  <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))' }}>
+                    <FilterPill
+                      status="all"
+                      count={15}
+                      isSelected={true}
+                      onClick={() => {}}
+                    />
+                    <FilterPill
+                      status="completed"
+                      count={8}
+                      isSelected={false}
+                      onClick={() => {}}
+                    />
+                    <FilterPill
+                      status="pending_approval"
+                      count={4}
+                      isSelected={false}
+                      onClick={() => {}}
+                    />
+                    <FilterPill
+                      status="in_progress"
+                      count={3}
+                      isSelected={false}
+                      onClick={() => {}}
+                    />
                   </div>
                 </div>
               </div>

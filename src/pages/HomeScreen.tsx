@@ -48,27 +48,27 @@ export function HomeScreen() {
             {/* Welcome Header */}
             <div className="mb-8 text-left">
               <h1 className="text-2xl font-semibold">Welcome, James Mitchell</h1>
-              
-              {/* Action Buttons */}
-              <div className="overflow-x-auto">
-                <div className="flex gap-3 mt-4 pb-4 min-w-max">
-                  <Button variant="default" className="flex items-center gap-2">
-                    <Send className="h-4 w-4" />
-                    Quick transfer
-                  </Button>
-                  <Button variant="secondary" className="flex items-center gap-2">
-                    <PlusCircle className="h-4 w-4" />
-                    Add funds
-                  </Button>
-                  <Button variant="secondary" className="flex items-center gap-2">
-                    <RefreshCcw className="h-4 w-4" />
-                    Convert
-                  </Button>
-                  <Button variant="secondary" className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    Schedule
-                  </Button>
-                </div>
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="overflow-x-auto mb-8">
+              <div className="flex items-center gap-4">
+                <Button variant="default" className="flex items-center gap-2">
+                  <Send className="h-4 w-4" />
+                  Quick transfer
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <PlusCircle className="h-4 w-4" />
+                  Add funds
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <RefreshCcw className="h-4 w-4" />
+                  Convert
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Schedule
+                </Button>
               </div>
             </div>
 

@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Sidebar } from "@/components/Sidebar"
-import { Send, Plus, RefreshCcw, Calendar, Share, X, Download, Filter } from "lucide-react"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Send, Plus, RefreshCcw, Calendar, Share, Download, Filter } from "lucide-react"
+import { AlertWithClose, AlertDescription } from "@/components/ui/alert"
 import { TransactionTable } from "@/components/TransactionTable"
 import { Avatar } from "@/components/ui/avatar"
+import { useState } from "react"
+import { cn } from "@/lib/utils"
 
 export function TransactionsScreen() {
+  const [showAlert, setShowAlert] = useState(true)
+
   return (
     <div className="min-h-screen bg-background">
       <div className="flex flex-col">
@@ -18,7 +22,7 @@ export function TransactionsScreen() {
               <div className="max-w-[960px] w-full mx-auto px-4">
                 <div className="flex items-center gap-0 justify-end">
                   <Avatar initials="JM" variant="outline" />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col ml-3">
                     <span className="text-sm font-medium">Sky Compass Media LLC</span>
                     <span className="text-xs text-muted-foreground">James Mitchell</span>
                   </div>
@@ -32,55 +36,54 @@ export function TransactionsScreen() {
             {/* Header */}
             <div className="mb-8 text-left">
               <h1 className="text-2xl font-semibold">Transactions</h1>
-              
-              {/* Action Buttons */}
-              <div className="overflow-x-auto">
-                <div className="flex justify-between items-center mt-4 pb-4">
-                  <div className="flex gap-3 min-w-max">
-                    <Button variant="default" className="flex items-center gap-2">
-                      <Send className="h-4 w-4" />
-                      Quick transfer
-                    </Button>
-                    <Button variant="secondary" className="flex items-center gap-2">
-                      <Plus className="h-4 w-4" />
-                      Add funds
-                    </Button>
-                    <Button variant="secondary" className="flex items-center gap-2">
-                      <RefreshCcw className="h-4 w-4" />
-                      Convert
-                    </Button>
-                    <Button variant="secondary" className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      Schedule
-                    </Button>
-                  </div>
-                  <Button variant="secondary" className="flex items-center gap-2 ml-4">
-                    <Download className="h-4 w-4" />
-                    Export
-                  </Button>
-                </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="overflow-x-auto mb-8">
+              <div className="flex items-center gap-4">
+                <Button variant="default" className="flex items-center gap-2">
+                  <Send className="h-4 w-4" />
+                  Quick transfer
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Plus className="h-4 w-4" />
+                  Add funds
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <RefreshCcw className="h-4 w-4" />
+                  Convert
+                </Button>
+                <Button variant="secondary" className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Schedule
+                </Button>
+                <Button variant="outline" className="ml-auto flex items-center gap-2">
+                  <Download className="h-4 w-4" />
+                  Export
+                </Button>
               </div>
             </div>
 
             {/* Alert */}
-            <Alert className="mb-6 bg-orange-50 border-orange-200">
-              <div className="flex justify-between items-start">
-                <div>
-                  <div className="font-medium mb-1">1 transaction(s) require your attention</div>
-                  <AlertDescription>
-                    Please <span className="underline cursor-pointer">review these transactions</span> to avoid processing delays
-                  </AlertDescription>
-                </div>
-                <Button variant="ghost" size="icon" className="h-6 w-6">
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-            </Alert>
-
-            {/* Table */}
-            <div>
-              <TransactionTable />
+            <div className="transition-[height,margin,opacity] duration-300 ease-in-out overflow-hidden"
+                 style={{ 
+                   height: showAlert ? '88px' : '0',
+                   marginBottom: showAlert ? '1rem' : '0',
+                   opacity: showAlert ? 1 : 0
+                 }}>
+              <AlertWithClose 
+                variant="warning"
+                onClose={() => setShowAlert(false)}
+              >
+                <div className="font-medium mb-1">1 transaction(s) require your attention</div>
+                <AlertDescription>
+                  Please <span className="underline cursor-pointer">review these transactions</span> to avoid processing delays
+                </AlertDescription>
+              </AlertWithClose>
             </div>
+
+            {/* Table (includes filter pills) */}
+            <TransactionTable />
           </div>
         </div>
       </div>

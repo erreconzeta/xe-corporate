@@ -1,6 +1,7 @@
 import { Button } from "../components/ui/button"
 import { Badge } from "../components/ui/badge"
 import { Input } from "../components/ui/input"
+import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert"
 import {
   Select,
   SelectContent,
@@ -173,6 +174,67 @@ export function ComponentsLibrary() {
                     <SelectItem value="option">Option</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+            </div>
+          </div>
+
+          {/* Alerts Card */}
+          <div className="rounded-lg border p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold mb-4">Alert Examples</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-sm font-medium mb-2">Default Alert</h3>
+                <Alert>
+                  <AlertTitle>Information</AlertTitle>
+                  <AlertDescription>
+                    This is the default alert style.
+                  </AlertDescription>
+                </Alert>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium mb-2">Success Alert</h3>
+                <Alert variant="success">
+                  <AlertTitle>Success</AlertTitle>
+                  <AlertDescription>
+                    Your transaction has been processed successfully.
+                  </AlertDescription>
+                </Alert>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium mb-2">Warning Alert</h3>
+                <Alert variant="warning">
+                  <AlertTitle>Warning</AlertTitle>
+                  <AlertDescription>
+                    Please review your transaction details before proceeding.
+                  </AlertDescription>
+                </Alert>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium mb-2">Info Alert</h3>
+                <Alert variant="info">
+                  <AlertTitle>Note</AlertTitle>
+                  <AlertDescription>
+                    Your transaction is being processed.
+                  </AlertDescription>
+                </Alert>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium mb-2">Destructive Alert</h3>
+                <Alert variant="destructive">
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>
+                    There was a problem processing your request.
+                  </AlertDescription>
+                </Alert>
+              </div>
+              <div>
+                <h3 className="text-sm font-medium mb-2">Compact Alert</h3>
+                <Alert className="py-2">
+                  <AlertTitle>Compact Style</AlertTitle>
+                  <AlertDescription>
+                    This alert uses custom padding for a more compact look.
+                  </AlertDescription>
+                </Alert>
               </div>
             </div>
           </div>
