@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowUpRight, MoreHorizontal, Check, Clock, XCircle, Filter, ChevronDown, ChevronRight, ChevronsUpDown, Plus, Download } from "lucide-react"
+import { Filter, ChevronsUpDown, ChevronDown, ChevronRight } from "lucide-react"
 import {
   Table,
   TableBody,
@@ -183,7 +183,6 @@ export function TransactionTable() {
       bValue = b[sortConfig.key]
     }
 
-    // Handle numeric values (amount, rate, fee)
     if (['sendAmount', 'receiveAmount', 'rate', 'fee'].includes(sortConfig.key)) {
       aValue = parseFloat(aValue.replace(/,/g, ''))
       bValue = parseFloat(bValue.replace(/,/g, ''))
